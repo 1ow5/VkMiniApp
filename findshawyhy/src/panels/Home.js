@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Demo from './demo';
 
 import { Panel, PanelHeader, Header, Button, Group, Cell, Div, Avatar } from '@vkontakte/vkui';
 
@@ -17,6 +18,7 @@ const Home = ({ id, go, fetchedUser }) => (
 		</Group>}
 
 		<Group header={<Header mode="secondary">Navigation Example</Header>}>
+			<Demo/>
 			<Div>
 				<Button stretched size="l" mode="secondary" onClick={go} data-to="persik">
 					Show me the Persik, please
