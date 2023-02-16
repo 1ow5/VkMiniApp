@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ca6f250b.chunk.css",
+    "main.js": "/static/js/main.c723c071.chunk.js",
+    "main.js.map": "/static/js/main.c723c071.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.cf1a3862.js",
+    "runtime-main.js.map": "/static/js/runtime-main.cf1a3862.js.map",
+    "static/css/2.170ca112.chunk.css": "/static/css/2.170ca112.chunk.css",
+    "static/js/2.3d01668e.chunk.js": "/static/js/2.3d01668e.chunk.js",
+    "static/js/2.3d01668e.chunk.js.map": "/static/js/2.3d01668e.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.170ca112.chunk.css.map": "/static/css/2.170ca112.chunk.css.map",
+    "static/css/main.ca6f250b.chunk.css.map": "/static/css/main.ca6f250b.chunk.css.map",
+    "static/js/2.3d01668e.chunk.js.LICENSE.txt": "/static/js/2.3d01668e.chunk.js.LICENSE.txt",
+    "static/media/minions-ambulance.be615813.gif": "/static/media/minions-ambulance.be615813.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.cf1a3862.js",
+    "static/css/2.170ca112.chunk.css",
+    "static/js/2.3d01668e.chunk.js",
+    "static/css/main.ca6f250b.chunk.css",
+    "static/js/main.c723c071.chunk.js"
+  ]
+}
