@@ -1,23 +1,22 @@
-import React from "react";
-import { useGeolocated } from "react-geolocated";
+import React, { useState } from "react";
 import Map from "./map";
 import bridge from '@vkontakte/vk-bridge';
 
-let lat=50;
-let long=50;
+
 const Demo = () => {
+    const [[lat,lon,acc], setGeo] = useState([0,0,0]);
     bridge.send('VKWebAppGetGeodata')
     .then((data) => { 
         if (data.available) {
-            lat = data.altitude
-            long = data.longitude
+            setGeo([data.lat,data.long,data.accuracy])
         }
     })
     .catch((error) => {
         console.log(error);        
     });   
     return (
-        <Map altitude={lat} longitude={long}/>
+        // <Map altitude={lat} longitude={long}/>
+        <div>{lat+"+"+lon+"+"+acc}</div>
     )
 };
 

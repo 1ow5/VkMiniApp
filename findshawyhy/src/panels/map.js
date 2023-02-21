@@ -10,7 +10,7 @@ const Map = (props) => {
             map = new mapglAPI.Map('map-container', {
                 center: [props.altitude, props.longitude],
                 zoom: 10,
-                key: '6eaf2aea-95d4-42f6-895a-8e164bb6fe5f',
+                key: '',
             });
         });
 

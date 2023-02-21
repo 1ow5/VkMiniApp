@@ -5,6 +5,8 @@ import '@vkontakte/vkui/dist/vkui.css';
 
 import Home from './panels/Home';
 import Persik from './panels/Persik';
+import Gps from './panels/gps';
+import Addr from './panels/typeAddr';
 
 const App = () => {
 	const [scheme, setScheme] = useState('bright_light')
@@ -38,8 +40,10 @@ const App = () => {
 					<SplitLayout popout={popout}>
 						<SplitCol>
 							<View activePanel={activePanel}>
-								<Home id='home' fetchedUser={fetchedUser} go={go} />
+								<Home id='home'  go={go} />
 								<Persik id='persik' go={go} />
+								<Gps id='gps' go={go}></Gps>
+								<Addr id='addr' go={go}></Addr>
 							</View>
 						</SplitCol>
 					</SplitLayout>
