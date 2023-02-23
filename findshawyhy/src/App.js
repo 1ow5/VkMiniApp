@@ -7,6 +7,7 @@ import Home from './panels/Home';
 import Persik from './panels/Persik';
 import Gps from './panels/gps';
 import Addr from './panels/typeAddr';
+import Address from './panels/address';
 
 const App = () => {
 	const [scheme, setScheme] = useState('bright_light')
@@ -44,6 +45,7 @@ const App = () => {
 								<Persik id='persik' go={go} />
 								<Gps id='gps' go={go}></Gps>
 								<Addr id='addr' go={go}></Addr>
+								<Address id='byAddres' go={go}/>
 							</View>
 						</SplitCol>
 					</SplitLayout>

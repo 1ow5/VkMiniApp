@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import { Panel, PanelHeader, Header, Group, PanelHeaderBack, FormItem, Input, FormLayout } from '@vkontakte/vkui';
+import { Panel, PanelHeader, Header, Group, PanelHeaderBack, FormItem, Input, FormLayout,Button } from '@vkontakte/vkui';
 
 const Addr = ({ id, go}) => {
     const [inputOne, setInputOne] = useState('');
     const  getSuggest = async(textMessage)=>{
-        await fetch(`https://catalog.api.2gis.com/3.0/suggests?q=${textMessage}&location=37.630866,55.752256&key=6eaf2aea-95d4-42f6-895a-8e164bb6fe5f`)
+        await fetch(`https://catalog.api.2gis.com/3.0/suggests?q=${textMessage}&location=Челябинск&key=rujrts5550`)
         .then(response=>response.json())
         .then(data =>{
             console.log(data)
@@ -36,7 +36,11 @@ const Addr = ({ id, go}) => {
                     />
                 </FormItem>
             </FormLayout>
+            <Button stretched size="l" mode="secondary" onClick={go} data-to="byAddres" style={{ marginBottom: 16, width:"100%" }}>
+			    Подтвердить
+		    </Button>
 		</Group>
+        
 	</Panel>
     )
 };
