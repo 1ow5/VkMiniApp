@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import bridge from '@vkontakte/vk-bridge';
-import Map from "./map";
 import MapYandex from "./mapYandex";
 import { Panel, PanelHeader, Header, Group, Div, Title, PanelHeaderBack,Button } from '@vkontakte/vkui';
 import { shape } from "prop-types";
@@ -27,13 +26,10 @@ const Gps = ({ id, go}) => {
 			<Div>
                 <Title level='3'>Ищем вас на картах широта:{lat} долгота:{lon} погрешность {Math.floor(acc/1000)}км</Title>
 			</Div>
-            {/* <Map altitude={lat} longitude={lon}/> */}
            <MapYandex altitude={lat} longitude={lon}/>
 		</Group>
 	</Panel>
     )
 };
-
-
 
 export default Gps;

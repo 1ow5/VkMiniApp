@@ -9,12 +9,19 @@ import Gps from './panels/gps';
 import Addr from './panels/typeAddr';
 import Address from './panels/address';
 
+let userAddres ="";
+
+export const changeUserAddres=(newAddres)=>{
+	userAddres = newAddres;
+	console.log(userAddres);
+}
+
+
 const App = () => {
 	const [scheme, setScheme] = useState('bright_light')
 	const [activePanel, setActivePanel] = useState('home');
 	const [fetchedUser, setUser] = useState(null);
 	const [popout, setPopout] = useState(<ScreenSpinner size='large' />);
-
 	useEffect(() => {
 		bridge.subscribe(({ detail: { type, data }}) => {
 			if (type === 'VKWebAppUpdateConfig') {
@@ -45,7 +52,7 @@ const App = () => {
 								<Persik id='persik' go={go} />
 								<Gps id='gps' go={go}></Gps>
 								<Addr id='addr' go={go}></Addr>
-								<Address id='byAddres' go={go}/>
+								<Address addres={userAddres} id='byAddres' go={go}/>
 							</View>
 						</SplitCol>
 					</SplitLayout>
