@@ -1,19 +1,12 @@
 import { Placemark} from '@pbe/react-yandex-maps';
 
-const Placemarks = (props) => {  
-    
-      const createPlaceMarks= (places)=>{
-        let Places =[];
-        for (let i = 0; i < places.length; i++) {
-            Places.push(places[i])
-            console.log(Places[i].coordinates)
-        }
-        return Places
-      }
+const Placemarks = async (props) => {      
+    let Places = props.places;
       return (
         <div>
-             {createPlaceMarks(props.places).map(() =>
-                 <Placemark geometry={[geometry.coordinates[0],geometry.coordinates[1]]}/>
+             {await Places.map((place) =>{
+                <Placemark geometry={[place.geometry.coordinates[1],place.geometry.coordinates[0]]}/>
+              }              
              )}
        </div>      
       );

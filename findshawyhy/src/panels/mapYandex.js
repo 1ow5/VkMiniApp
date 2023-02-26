@@ -8,26 +8,27 @@ const MapYandex = (props) => {
         center: [props.altitude, props.longitude],
         zoom: 15,
       };
-      const getNearestShavyha = (lat,lon)=>{
+      const getNearestShavyha =async (lat,lon)=>{
         if(!fetchedUser){
-            fetch(`https://search-maps.yandex.ru/v1/?text=Шаурма Челябинск&type=biz&lang=ru_RU&apikey=c92adce5-d74d-4080-ad6e-784664d8dab4&ll=${lat},${lon}&spn=0.5,0.5`)
-            .then(response=>{return response.json()})
+            let places=[];
+            await fetch(`https://search-maps.yandex.ru/v1/?text=Шаурма Челябинск&type=biz&lang=ru_RU&apikey=c92adce5-d74d-4080-ad6e-784664d8dab4&ll=${lat},${lon}&spn=0.5,0.5&results=20`)
+            .then(response=> response.json())
             .then(data =>{
-                console.log(data);
-                // 55.1878656 долгота:61.3810176
+                places = data.features;
             })
             .catch(error=>{
                 console.error(error);
-            });
+            });            
             setUser(true);
+            // console.log(places)
+            return places
         }
-        console.log(lat,lon);
     }   
       return (
         <div>
-            <YMaps>
-            <Map onLoad={getNearestShavyha(props.altitude,props.longitude)} style={{height:"500px",width:"100%"}} defaultState={defaultState}>
-                {/* <Placemarks places={getNearestShavyha()}/> */}
+            <YMaps >
+            <Map style={{height:"500px",width:"100%"}} defaultState={defaultState}>
+                <Placemarks places={getNearestShavyha(props.altitude,props.longitude)}/>
                 <Placemark geometry={[props.altitude, props.longitude]}  />
                 <GeolocationControl options={{ float: "left" }} />
                 <RouteButton options={{ float: "right" }} />
