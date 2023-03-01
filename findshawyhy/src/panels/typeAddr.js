@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {changeUserAddres} from "../App"
 import { Panel, PanelHeader, Header, Group, PanelHeaderBack, FormItem, Input, FormLayout,Button } from '@vkontakte/vkui';
 
 const Addr = ({ id, go}) => {
 
     const [inputOne, setInputOne] = useState('');
+    useEffect(()=>{
+        changeAddres(inputOne)
+    })
     const changeAddres =(text)=>{
         changeUserAddres(text);
-
     }
-
 	return (
     <Panel id={id}>
 		<PanelHeader 
@@ -26,10 +27,11 @@ const Addr = ({ id, go}) => {
                     align={"left"}
                     placeholder={"Ваш адрес"}
                     disabled={false}
-                    onChange={(event) => {setInputOne(event.target.value); changeAddres(inputOne)}}
+                    onChange={(event) => {setInputOne(event.target.value)}}
                     />
                 </FormItem>
             </FormLayout>
+            {/* Свердловский Проспект 41 */}
             <Button stretched size="l" mode="secondary" onClick={go} data-to="byAddres" style={{ marginBottom: 16, width:"100%" }}>
 			    Подтвердить
 		    </Button>

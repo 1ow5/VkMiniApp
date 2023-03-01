@@ -9,11 +9,11 @@ import Gps from './panels/gps';
 import Addr from './panels/typeAddr';
 import Address from './panels/address';
 
-let userAddres ="";
+global.userAddres ="";
 
 export const changeUserAddres=(newAddres)=>{
-	userAddres = newAddres;
-	console.log(userAddres);
+	global.userAddres = newAddres;
+	console.log(global.userAddres);
 }
 
 
@@ -52,7 +52,7 @@ const App = () => {
 								<Persik id='persik' go={go} />
 								<Gps id='gps' go={go}></Gps>
 								<Addr id='addr' go={go}></Addr>
-								<Address addres={userAddres} id='byAddres' go={go}/>
+								<Address addres={global.userAddres} id='byAddres' go={go}/>
 							</View>
 						</SplitCol>
 					</SplitLayout>

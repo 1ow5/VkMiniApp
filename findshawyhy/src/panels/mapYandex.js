@@ -15,28 +15,25 @@ const MapYandex = (props) => {
             .then(response=> response.json())
             .then(data =>{
                 places = data.features;
+                console.log(data.features)
             })
             .catch(error=>{
                 console.error(error);
             });            
             setUser(true);
-            // console.log(places)
             return places
         }
     }   
-      return (
-        <div>
-            <YMaps >
+      return(
+            <YMaps onLoad={getNearestShavyha(props.altitude, props.longitude)}>
             <Map style={{height:"500px",width:"100%"}} defaultState={defaultState}>
-                <Placemarks places={getNearestShavyha(props.altitude,props.longitude)}/>
+                {/* <Placemarks places={getNearestShavyha(props.altitude,props.longitude)}/> */}
                 <Placemark geometry={[props.altitude, props.longitude]}  />
                 <GeolocationControl options={{ float: "left" }} />
                 <RouteButton options={{ float: "right" }} />
                 <ZoomControl options={{ float: "right" }} />
             </Map>
-        </YMaps>
-        </div>
-        
+        </YMaps>       
       );
 };
 export default MapYandex

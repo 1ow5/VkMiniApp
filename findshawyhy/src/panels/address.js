@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import MapYandex from "./mapYandex";
 import { Panel, PanelHeader, Header, Group, Div, Title, PanelHeaderBack } from '@vkontakte/vkui';
 
-const Adress = ({ id, go},props) => {
+
+const Adress = ({ id, go}) => {
     const [fetchedUser, setUser] = useState(false);
     const [[lat,lon], setGeo] = useState([0,0]);
-    const geocoding = ()=>{
+    const geocoding =()=>{
         if(!fetchedUser){
-            fetch(`https://geocode-maps.yandex.ru/1.x/?&geocode=Челябинск ${props.addres}&apikey=2fd87198-7275-49f7-b2e8-9697b0331bfc&format=json&results=1`)
+            fetch(`https://geocode-maps.yandex.ru/1.x/?&geocode=Челябинск ${global.userAddres}&apikey=2fd87198-7275-49f7-b2e8-9697b0331bfc&format=json&results=1`)
             .then(response=>{return response.json()})
             .then(data =>{
                 console.log(data.response.GeoObjectCollection.featureMember[0]);
