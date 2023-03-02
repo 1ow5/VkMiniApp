@@ -1,10 +1,11 @@
 import { Placemark} from '@pbe/react-yandex-maps';
 
-const Placemarks = async (props) => {      
+const Placemarks =(props) => {      
     let Places = props.places;
+    console.log(Places,props.places);
       return (
         <div>
-             {await Places.map((place) =>{
+             {props.places.map((place) =>{
                 <Placemark geometry={[place.geometry.coordinates[1],place.geometry.coordinates[0]]}/>
               }              
              )}
