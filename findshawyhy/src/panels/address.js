@@ -11,7 +11,6 @@ const Adress = ({ id, go}) => {
             fetch(`https://geocode-maps.yandex.ru/1.x/?&geocode=Челябинск ${global.userAddres}&apikey=2fd87198-7275-49f7-b2e8-9697b0331bfc&format=json&results=1`)
             .then(response=>{return response.json()})
             .then(data =>{
-                console.log(data.response.GeoObjectCollection.featureMember[0]);
                 let point = data.response.GeoObjectCollection.featureMember[0].GeoObject.Point.pos.split(" ")
                 setGeo([point[1],point[0]]);
             })
@@ -20,7 +19,6 @@ const Adress = ({ id, go}) => {
             });
             setUser(true);
         }
-        console.log(lat,lon);
     }   
  
 	return (

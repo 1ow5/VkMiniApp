@@ -12,7 +12,6 @@ global.userAddres ="";
 
 export const changeUserAddres=(newAddres)=>{
 	global.userAddres = newAddres;
-	console.log(global.userAddres);
 }
 
 
