@@ -9,10 +9,10 @@ const Home = ({ id, go}) => (
 
 		<Group header={<Header mode="secondary">Определение местоположения</Header>}>
 			<Div>
-				<Button stretched size="l" mode="secondary" onClick={go} data-to="gps" style={{ marginBottom: 16 }}>
+				<Button stretched size="l" mode="secondary" onClick={()=>{go("gps")}} style={{ marginBottom: 16 }}>
 					Определить местоположение через gps
 				</Button>
-				<Button stretched size="l" mode="secondary" onClick={go} data-to="addr">
+				<Button stretched size="l" mode="secondary" onClick={() => {go("addr")}}>
 					Ввести местоположение
 				</Button>
 			</Div>

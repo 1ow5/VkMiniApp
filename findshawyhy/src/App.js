@@ -35,8 +35,8 @@ const App = () => {
 		fetchData();
 	}, []);
 
-	const go = e => {
-		setActivePanel(e.currentTarget.dataset.to);
+	const go = to => {
+		setActivePanel(to);
 	};
 
 	return (
@@ -47,7 +47,7 @@ const App = () => {
 						<SplitCol>
 							<View activePanel={activePanel}>
 								<Home id='home'  go={go} />
-								<Gps id='gps' go={go}></Gps>
+								<Gps addres={global.userAddres} id='gps' go={go}></Gps>
 								<Addr id='addr' go={go}></Addr>
 								<Address addres={global.userAddres} id='byAddres' go={go}/>
 							</View>

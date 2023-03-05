@@ -14,7 +14,7 @@ const Addr = ({ id, go}) => {
 	return (
     <Panel id={id}>
 		<PanelHeader 
-            left={<PanelHeaderBack onClick={go} data-to="home"/>}>
+            left={<PanelHeaderBack onClick={() => go("home")} />}>
             НайдиШавуху
         </PanelHeader>
 		<Group header={<Header mode="secondary">Определение по адресу</Header>}>
@@ -32,7 +32,7 @@ const Addr = ({ id, go}) => {
                 </FormItem>
             </FormLayout>
             {/* Свердловский Проспект 41 */}
-            <Button stretched size="l" mode="secondary" onClick={go} data-to="byAddres" style={{ marginBottom: 16, width:"100%" }}>
+            <Button stretched size="l" mode="secondary" onClick={() => go("byAddres")} style={{ marginBottom: 16, width:"100%" }}>
 			    Подтвердить
 		    </Button>
 		</Group>   

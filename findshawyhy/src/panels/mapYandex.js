@@ -1,5 +1,6 @@
 import { YMaps, Map, Placemark, GeolocationControl, RouteButton, ZoomControl } from '@pbe/react-yandex-maps';
 import { useState } from 'react';
+import placemarkIcon from '../img/55lrtj.gif'
 
 let places=[];
 
@@ -17,7 +18,6 @@ const MapYandex = (props) => {
                 for(let i=0;i< data.features.length;i++){
                     places[i]=data.features[i]
                 }           
-                console.log(places)
             })
             .catch(error=>{
                 console.error(error);
@@ -34,7 +34,12 @@ const MapYandex = (props) => {
                     key={place.geometry.coordinates[0]+""+place.geometry.coordinates[1]}
                     geometry={[place.geometry.coordinates[1], place.geometry.coordinates[0]]}
                     
-                    
+                    options={{
+                        iconLayout: "default#image",
+                        iconImageSize: [50, 50],
+                        iconImageHref: placemarkIcon
+                    }}
+                    hintContent='Ну давай уже тащи'
                 />
             ))}
                 

@@ -24,7 +24,7 @@ const Adress = ({ id, go}) => {
 	return (
     <Panel onLoad={geocoding()} id={id}>
 		<PanelHeader 
-            left={<PanelHeaderBack onClick={go} data-to="home"/>}>
+            left={<PanelHeaderBack onClick={() => {go("home")}}/>}>
             НайдиШавуху
         </PanelHeader>
 		<Group header={<Header mode="secondary">Ваши координаты</Header>}>

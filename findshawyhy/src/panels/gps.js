@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import bridge from '@vkontakte/vk-bridge';
-import MapYandex from "./mapYandex";
+import { changeUserAddres } from "../App";
 import { Panel, PanelHeader, Header, Group, Div, Title, PanelHeaderBack,Button } from '@vkontakte/vkui';
 import "../style/style.scss";
 
@@ -9,7 +9,6 @@ const Gps = ({ id, go}) => {
     const [[lat,lon,acc], setGeo] = useState([0,0,0]);
     const [fetchedUser, setUser] = useState(false);
     const [userData, setUserData]= useState('');
-    const [visible, setVisible] = useState(false);
     bridge.send('VKWebAppGetGeodata')
     .then((data) => { 
         if (data.available) {
@@ -26,7 +25,9 @@ const Gps = ({ id, go}) => {
             .then(response=>{return response.json()})
             .then(data =>{
                 console.log(data.response.GeoObjectCollection.featureMember[0].GeoObject);
-                setUserData(data.response.GeoObjectCollection.featureMember[0].GeoObject);
+                if(data.response.GeoObjectCollection.featureMember[0].GeoObject != undefined){
+                    setUserData(data.response.GeoObjectCollection.featureMember[0].GeoObject);
+                }
             })
             .catch(error=>{
                 console.error(error);
@@ -39,14 +40,17 @@ const Gps = ({ id, go}) => {
 	return (
     <Panel id={id}>
 		<PanelHeader 
-            left={<PanelHeaderBack onClick={go} data-to="home"/>}>
+            left={<PanelHeaderBack onClick={() => {go("home")}} />}>
             НайдиШавуху
         </PanelHeader>
-		<Group className={visible?"none":""} header={<Header mode="secondary">Ваши местоположение?</Header>}>
+		<Group header={<Header mode="secondary">Ваши местоположение?</Header>}>
 			<Div>
-                <Title level='3'>вы находитесь: {userData.name} {userData.description}</Title>
-                <Button size="l" mode="secondary" onClick={go} data-to="byAddres" style={{ marginBottom: 16, width:"100%" }}>Да</Button>
-                <Button size="l" mode="secondary" onClick={go} data-to="addr" style={{ marginBottom: 16, width:"100%" }}>Нет</Button>
+                <Title level='3'>Вы находитесь: {userData.name} {userData.description}</Title>
+                <Button size="l" mode="secondary" onClick={() => {
+                    go("byAddres") 
+                    changeUserAddres(userData.name)
+                    }} style={{ marginBottom: 16, width:"100%" }}>Да</Button>
+                <Button size="l" mode="secondary" onClick={() => go("addr")} style={{ marginBottom: 16, width:"100%" }}>Нет</Button>
 			</Div>
 		</Group>
 	</Panel>
